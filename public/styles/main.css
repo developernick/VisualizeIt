@@ -1,0 +1,14 @@
+body{
+	background-color: cadetblue;
+
+}
+#window{
+	border: 2px dashed white;
+	height: 40%;
+}
+.options{
+	border: 2px dashed white;
+}
+.nav{
+	float:right;
+}

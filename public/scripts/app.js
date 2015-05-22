@@ -1,5 +1,6 @@
-$(document).ready(function (event) {
 
-  //stuff happens on load
+$(document).ready(function(event) {
 
-})
+
+
+});
