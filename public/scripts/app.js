@@ -55,8 +55,8 @@ function d3Project(data){
   svg.selectAll('circle')
     .data(data)
         .attr('r', function(d){ return d/14 +'px';})
-        .attr('cx', function(y, x){ return (105-(data.length/(x+1)))+'%';})
-        .attr('cy', function(d){ return Math.abs(400-d*2) +'px';})
+        .attr('cx', function(y, x){ return (110-(data.length/(x+1)))+'%';})
+        .attr('cy', function(d){ return Math.abs(450-d*2) +'px';})
         .attr('class','bubble')
         .style('fill',function(d){ return colorGradient(120/d);})
         .style('opacity', function(d){ return d/200;});
