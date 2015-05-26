@@ -3,12 +3,22 @@ body{
 
 }
 #window{
-	border: 2px dashed white;
-	height: 40%;
+	overflow: auto;
+	/*border: 2px dashed white;*/
+	height: 60%;
+	-webkit-box-shadow: -2px 0px 245px 47px rgba(0,0,0,1);
+-moz-box-shadow: -2px 0px 245px 47px rgba(0,0,0,1);
+box-shadow: -2px 0px 245px 47px rgba(0,0,0,1);
 }
 .options{
+	position: relative;
 	border: 2px dashed white;
 }
 .nav{
 	float:right;
+}
+svg{
+	background-color: black;
+	/*border: 2px dashed white;*/
+
 }
