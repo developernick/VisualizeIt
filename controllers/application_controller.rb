@@ -1,4 +1,4 @@
-class WelcomeController < Sinatra::Base
+class ApplicationController < Sinatra::Base
 
 	enable :sessions
 
@@ -22,5 +22,3 @@ class WelcomeController < Sinatra::Base
 	get '/' do
 		erb :index
 	end
-
-	
