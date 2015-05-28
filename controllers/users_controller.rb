@@ -40,6 +40,14 @@ class UsersController < ApplicationController
 		puts "User has been Destroyed!"
 	end
 
+	def profile
+    authenticate!
+    @user = current_user
+  end
+  def sign_in
+
+  end
+
 private
 
 	def user_params
