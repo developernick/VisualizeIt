@@ -1,8 +1,7 @@
 class SessionsController < Sinatra::Base
   enable :sessions
-  helpers Sinatra::SessionHelper
+  helpers Sinatra::SessionsHelper
   use Rack::MethodOverride
-
 
   ##   ***** Debugging *****
   # get '/pry' do
@@ -16,6 +15,8 @@ class SessionsController < Sinatra::Base
     if user && user.password == params[:password]
       sesson[:current_user] = user.id
       redirect '/'
+    else
+      redirect '/'
     end
   end
 
@@ -24,4 +25,6 @@ class SessionsController < Sinatra::Base
     redirect '/'
   end
 
-end
+end # End SessionsController
+
+# Completed

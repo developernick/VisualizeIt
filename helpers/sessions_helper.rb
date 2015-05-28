@@ -1,5 +1,6 @@
+
 module Sinatra
-  module SessionHelper
+  module SessionsHelper
 
     def current_user
       if session[:current_user]

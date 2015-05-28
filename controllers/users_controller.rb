@@ -1,37 +1,48 @@
 class UsersController < ApplicationController
 
-	def home
-		authenticate!
-		@user = current_user
+
+	get "/users" do
+		user = Users.all
+		content_type :json
+		user.to_json
 	end
 
-	def index
-
+	get "/users/:id" do
+		user = User.find(params[:id].to_i)
+		content_type :json
+		user.to_json
 	end
 
-	def show
-
+	post "/users" do
+		user = User.new(params[:user])
+		user.password= params[:password]
+		user.save!
+		redirect '/'
 	end
 
-	def update
-
+	put "/users/:id" do
+		user = User.find(params[:id].to_i)
+		user.update(params[:user])
+		content_type :json
+		user.to_json
 	end
 
-	def destroy
-
+	patch "/users/:id" do
+		user = User.find(params[:id].to_i)
+		user.update(params[:user])
+		content_type :json
+		user.to_json
 	end
 
-	def profile
-
-	end
-
-	def login
-
+	delete "/users/:id" do
+		user = User.find(params[:id].to_i)
+		user.destroy
+		puts "User has been Destroyed!"
 	end
 
 private
 
 	def user_params
-
+		params.require(:user).permit(:username, :password)
 	end
 end

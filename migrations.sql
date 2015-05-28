@@ -8,8 +8,8 @@ CREATE TABLE users (
 	password_hash VARCHAR(255),
 );
 
-CREATE TABLE visuals (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(255),
-	user_id INTEGER
-);
+-- CREATE TABLE visuals (
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(255),
+-- 	user_id INTEGER
+-- );
