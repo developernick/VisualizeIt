@@ -1,18 +1,13 @@
 # ***GEMS***
 require "sinatra"
-require "sinatra/reloader"
-
-configure :production do
-  enable :reloader
-end
-
+require "sinatra/reloader" if development?
 require 'bundler'
 Bundler.require()
 
 # *** Connections ***
 ActiveRecord::Base.establish_connection(
   :adapter => 'postgresql',
-  :database => 'visuals_data'
+  :database => 'visual_data'
 )
 
 # *** Sesions***

@@ -1,39 +1,39 @@
 class UsersController < ApplicationController
 
-	get "/users" do
-		user = Users.all
+	get "/" do
+		users = User.all
 		content_type :json
-		user.to_json
+		users.to_json
 	end
 
-	get "/users/:id" do
+	get "/:id" do
 		user = User.find(params[:id].to_i)
 		content_type :json
 		user.to_json
 	end
 
-	post "/users" do
+	post "/" do
 		user = User.new(params[:user])
-		user.password= params[:password]
+		user.password = params[:password]
 		user.save!
 		redirect '/'
 	end
 
-	put "/users/:id" do
+	put "/:id" do
 		user = User.find(params[:id].to_i)
 		user.update(params[:user])
 		content_type :json
 		user.to_json
 	end
 
-	patch "/users/:id" do
+	patch "/:id" do
 		user = User.find(params[:id].to_i)
 		user.update(params[:user])
 		content_type :json
 		user.to_json
 	end
 
-	delete "/users/:id" do
+	delete "/:id" do
 		user = User.find(params[:id].to_i)
 		user.destroy
 		puts "User has been Destroyed!"
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     authenticate!
     @user = current_user
   end
+
   def sign_in
 
   end

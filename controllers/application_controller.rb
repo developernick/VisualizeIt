@@ -11,6 +11,9 @@ class ApplicationController < Sinatra::Base
 		erb :index
 	end
 
+	get '/sign_up' do
+		erb :new_user
+	end
 # -_-_-_-_-_-_- Helper -_-_-_-_-_-_-
 	def current_user
   	if session[:current_user]
