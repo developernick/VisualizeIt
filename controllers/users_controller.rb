@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
 	get "/users" do
 		user = Users.all
 		content_type :json

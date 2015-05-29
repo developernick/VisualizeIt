@@ -2,10 +2,10 @@
 CREATE DATABASE visual_data;
 \c visual_data
 
-CREATE TABLE users (
+CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(255),
-	password_hash VARCHAR(255),
+	password_hash VARCHAR(255)
 );
 
 -- CREATE TABLE visuals (

@@ -1,7 +1,11 @@
 
-// $(document).ready(function(event) {
+// $(document).ready(function(event) {});
+
+// document.getElementById('#signin').addEventListener("click", function (event) {
+// 	redirect '/new_user'
 // });
 
+// -		-		-		-	Web Audio API
 //		-		-		-		-		-	--Global Audio var--
 var microphone;
 var audioStream;

@@ -14,6 +14,9 @@ ActiveRecord::Base.establish_connection(
   :adapter => 'postgresql',
   :database => 'visuals_data'
 )
+
+# *** Sesions***
+enable(:sessions)
 # *** Helpers ***
 require './helpers/sessions_helper'
 # *** Models ***
@@ -27,8 +30,8 @@ require "./controllers/users_controller"
 require "./controllers/visuals_controller"
 
 # *** Routing ***
-map('/api/users') { run UsersController.new() }
-map('/api/visuals') { run VisualsController.new() }
+map('/users') { run UsersController.new() }
+map('/visuals') { run VisualsController.new() }
 map('/sessions') { run SessionsController.new() }
 
 map('/') { run ApplicationController.new() }
