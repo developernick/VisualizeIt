@@ -10,10 +10,10 @@ class SessionsController < Sinatra::Base
 
   #-_-_-_-_-_-_-_-_-_-_- Routes -_-_-_-_-_-_-_-_-_-_-
 
-  get '/' do
-    erb :index
-  end
-  
+  # get '/' do
+  #   erb :index
+  # end
+
   post '/' do
     user = User.find_by(:username => params[:username])
     if user && user.password == params[:password]
@@ -26,7 +26,7 @@ class SessionsController < Sinatra::Base
 
 delete '/' do
    session[:current_user] = nil
-   redirect '/'
+   erb :index
   end
 
 end # End SessionsController

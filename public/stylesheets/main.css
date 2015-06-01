@@ -1,14 +1,21 @@
 /*$MainFont:  'Lato', sans-serif;
-$FontColor: #A0A0A0;
-$MainBG: #25383F;*/
+$FontCLR: #A0A0A0;
+$MainBG: #25383F;
+$BorderCLR: #1E666C*/
 
 body{
-		background-color: #162D35;
+		background-color: #2C3335;
 		color: #A0A0A0;
+}
+.one{
+	border: 2px dashed yellow;
+	height: 10em;
+	display: none;
 }
 .container{
 	margin-top: 20px;
 }
+
 .row{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
@@ -22,15 +29,19 @@ h1{
 	font-family: 'Lato', sans-serif;
 	font-size: 65px;
 	position: relative;
+	display: inline-flex;
 
+}
+.it{
+	color:#1E666C;
 }
 button{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
 	border-color: #1E666C;
 	-webkit-box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
--moz-box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
-box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
+	-moz-box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
+	box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
 }
 .options{
 	margin-top: 75px;

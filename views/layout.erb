@@ -16,11 +16,25 @@
   </head>
 
   <body>
+    <div class="container skeleton">
+      <article class="one column ">One</article>
+      <article class="one column ">Two</article>
+      <article class="one column ">Three</article>
+      <article class="one column ">Four</article>
+      <article class="one column ">Five</article>
+      <article class="one column ">Six</article>
+      <article class="one column ">Seven</article>
+      <article class="one column ">Eight</article>
+      <article class="one column ">Nine</article>
+      <article class="one column ">Ten</article>
+      <article class="one column ">Eleven</article>
+      <article class="one column ">Twelve</article>
+    </div>
 		<div class="container">
 
       <div class="row nav">
         <% if current_user %>
-          <form class="signout" action="/sessions" method=":destroy">
+          <form class="signout" action="/sessions" method="DELETE">
             <button type="submit" id="signout">Log Out</button>
           </form>
         <% else %>
@@ -34,8 +48,10 @@
         </div>
         <% end %>
       </div>
+      <div class="eight columns ">
+        <h1 class="brand-logo"><p>Visualize</p><p class="it">It</p></h1>
+      </div>
 
-			<h1 class=" row three columns">VisualizeIt</h1>
 
         <%= yield %>
 
@@ -43,3 +59,8 @@
   </body>
 
 </html>
+
+<!-- <form action="/sessions" method='post'>
+     <input type="hidden" name='_method' value='delete'>
+     <input type="submit" value='Log-Off'>
+   </form> -->
