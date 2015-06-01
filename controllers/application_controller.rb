@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
 	get '/sign_up' do
 		erb :new_user
 	end
+
+	get '/log_in' do
+		erb :login
+	end
 # -_-_-_-_-_-_- Helper -_-_-_-_-_-_-
 	def current_user
   	if session[:current_user]
@@ -24,7 +28,7 @@ class ApplicationController < Sinatra::Base
 	end
 
 	def authenticate!
-  	redirect '/' unless current_user
+  	redirect '/log_in' unless current_user
 	end
 
 

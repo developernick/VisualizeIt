@@ -30,5 +30,4 @@ map('/visuals') { run VisualsController.new() }
 map('/sessions') { run SessionsController.new() }
 
 map('/') { run ApplicationController.new() }
-
 # Completed

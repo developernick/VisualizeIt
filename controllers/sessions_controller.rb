@@ -10,19 +10,23 @@ class SessionsController < Sinatra::Base
 
   #-_-_-_-_-_-_-_-_-_-_- Routes -_-_-_-_-_-_-_-_-_-_-
 
+  get '/' do
+    erb :index
+  end
+  
   post '/' do
     user = User.find_by(:username => params[:username])
     if user && user.password == params[:password]
-      sesson[:current_user] = user.id
+      session[:current_user] = user.id
       redirect '/'
     else
       redirect '/'
     end
   end
 
-  delete '/' do
-    session[:current_user] = nil
-    redirect '/'
+delete '/' do
+   session[:current_user] = nil
+   redirect '/'
   end
 
 end # End SessionsController

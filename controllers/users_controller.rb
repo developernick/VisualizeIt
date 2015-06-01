@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+	def home
+    authenticate!
+    @user = current_user
+  end
+
 	get "/" do
 		users = User.all
 		content_type :json

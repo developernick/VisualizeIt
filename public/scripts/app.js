@@ -1,8 +1,8 @@
 
 // $(document).ready(function(event) {});
 
-// document.getElementById('#signin').addEventListener("click", function (event) {
-// 	redirect '/new_user'
+// $(document).on("click","#signup",function(){
+// 	$(#signUpForm).show();
 // });
 
 // -		-		-		-	Web Audio API

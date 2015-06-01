@@ -17,12 +17,24 @@
   <body>
 		<div class="container">
 
-      <p class="nav">
+      <div class="row nav">
+        <% if current_user %>
+          <form class="signout" action="/sessions" method=":destroy">
+            <button type="submit" id="signout">Log Out</button>
+          </form>
+        <% else %>
+        <div class="row guestnav six columns">
+          <form class="new" action="/log_in" method="get">
+            <button type="submit" id="signin">Log In</button>
+          </form>
+          <form class="new" action="/sign_up" method="get">
+            <button type="submit" id="signup">Sign Up</button>
+          </form>
+        </div>
+        <% end %>
+      </div>
 
-        <button type="button" class="two">Log In</button>
-      </p>
-
-			<div class="three columns">Visualize</div>
+			<h1 class=" row three columns">Visualize</h1>
 
         <%= yield %>
 
