@@ -72,7 +72,7 @@ window.onload = function(){
 
   svg = d3.select('#window')
           .append('svg')
-						.attr('class', 'tweleve columns')
+						.attr('class', 'u-full-width')
             // .attr('width', '980px')
             .attr('height', '410px');
 };

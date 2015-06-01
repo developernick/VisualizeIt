@@ -1,9 +1,10 @@
 <html>
   <head>
     <title>VisualizeIt</title>
-    <link rel="stylesheet" href="/styles/normalize.css">
-    <link rel="stylesheet" href="/styles/skeleton.css">
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="/scripts/app.js"></script>
 
     <script type="text/javascript" src="/scripts/lib/jquery.js"></script>
@@ -23,18 +24,18 @@
             <button type="submit" id="signout">Log Out</button>
           </form>
         <% else %>
-        <div class="row guestnav six columns">
+        <div class="row guestnav">
           <form class="new" action="/log_in" method="get">
             <button type="submit" id="signin">Log In</button>
           </form>
-          <form class="new" action="/sign_up" method="get">
+          <form class="new five columns" action="/sign_up" method="get">
             <button type="submit" id="signup">Sign Up</button>
           </form>
         </div>
         <% end %>
       </div>
 
-			<h1 class=" row three columns">Visualize</h1>
+			<h1 class=" row three columns">VisualizeIt</h1>
 
         <%= yield %>
 
