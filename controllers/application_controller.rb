@@ -18,6 +18,12 @@ class ApplicationController < Sinatra::Base
 	get '/log_in' do
 		erb :login
 	end
+
+	get '/app' do
+		erb :index
+	end
+
+
 # -_-_-_-_-_-_- Helper -_-_-_-_-_-_-
 	def current_user
   	if session[:current_user]

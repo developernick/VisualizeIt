@@ -34,9 +34,10 @@
 
       <div class="row nav">
         <% if current_user %>
-          <form class="signout" action="/sessions" method="DELETE">
-            <button type="submit" id="signout">Log Out</button>
-          </form>
+        <form action="/sessions" method='post'>
+          <input type="hidden" name='_method' value='delete'>
+          <input type="submit" value='Log-Off'>
+        </form>
         <% else %>
         <div class="row guestnav">
           <form class="new" action="/log_in" method="get">
@@ -51,16 +52,8 @@
       <div class="eight columns ">
         <h1 class="brand-logo"><p>Visualize</p><p class="it">It</p></h1>
       </div>
-
-
         <%= yield %>
-
 		</div>
   </body>
 
 </html>
-
-<!-- <form action="/sessions" method='post'>
-     <input type="hidden" name='_method' value='delete'>
-     <input type="submit" value='Log-Off'>
-   </form> -->

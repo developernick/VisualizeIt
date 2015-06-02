@@ -4,6 +4,10 @@ require "sinatra/reloader" if development?
 require 'bundler'
 Bundler.require()
 
+configure :development do
+    register Sinatra::Reloader
+  end
+
 # *** Connections ***
 ActiveRecord::Base.establish_connection(
   :adapter => 'postgresql',
@@ -30,4 +34,5 @@ map('/visuals') { run VisualsController.new() }
 map('/sessions') { run SessionsController.new() }
 
 map('/') { run ApplicationController.new() }
+map('/app') { run ApplicationController.new() }
 # Completed
