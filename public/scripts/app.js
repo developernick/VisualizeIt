@@ -42,15 +42,15 @@ navigator.getUserMedia({audio: true}, function(stream) {
 function d3Project(data){
 
 	var colorGradient = d3.scale.linear()
-	    .domain([0.5, 0.75, 2])
-	    .range(['#AA6C38', '#882D60', '#008888']);
+	    .domain([0.5, .75, 2])
+	    .range(['#008888', '#381641', '#A6C662']);//([ top, middle, bottom ])
 
   svg.selectAll('circle')
       .data(data)
       .enter()
         .append('circle')
-				.on('mousedown', function(){
-	    explode(d3.select(this))});
+				// .event($('.bubble').attr('r') > '3px', function(){explode(d3.select(this))})
+				.on('mousedown', function(){explode(d3.select(this))});
 
   svg.selectAll('circle')
     .data(data)
@@ -61,15 +61,16 @@ function d3Project(data){
         .style('fill',function(d){ return colorGradient(100/d);})
         .style('opacity', function(d){ return d/250;});
     return svg;
-	svg.selectAll('.bubble')
-		.addEventListener(attr('r') >= 4 , function(e){
-			event
+
+		function explode(data){
+		data
 			.transition()
-	    .duration(500)
-	      .attr('r', '100%');
-	  return this;
-	})
-};
+		    .duration(500)
+		      .attr('r', '100%');
+		  return this;
+		};
+
+}
 // function visualOne(data){
 //
 // 	var colorGradient = d3.scale.linear()
@@ -94,8 +95,8 @@ function d3Project(data){
 //     return svg;
 // }
 
-function explode(input){
-	input
+function explode(data){
+data
 	.transition()
     .duration(500)
       .attr('r', '100%');
