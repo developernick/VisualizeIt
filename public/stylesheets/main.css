@@ -35,7 +35,7 @@ h1{
 .it{
 	color:#1E666C;
 }
-button{
+button, input {
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
 	border-color: #1E666C;

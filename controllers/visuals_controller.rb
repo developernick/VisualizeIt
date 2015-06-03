@@ -1,4 +1,4 @@
-class VisualsController < Sinatra::Base
+class VisualsController < ApplicationController
 	enable :sessions
 
 	get '/one' do

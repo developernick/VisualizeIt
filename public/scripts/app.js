@@ -1,9 +1,5 @@
 
-// $(document).ready(function(event) {});
-
-// $(document).on("click","#signup",function(){
-// 	$(#signUpForm).show();
-// });
+// $(document).ready(function() {});
 
 // -		-		-		-	Web Audio API
 //		-		-		-		-		-	--Global Audio var--
@@ -36,37 +32,75 @@ navigator.getUserMedia({audio: true}, function(stream) {
 
 	setInterval(function(){
     analyser.getByteFrequencyData(data);
-    d3Project(data);
-  }, 5); // repeat rendering project
+    d3Project(data);// newVisual
+  }, 2); // repeat rendering project
 
 }, function(error){console.log(error);});
 
 // 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-
-
-
-
+// d3Project(data, [ colors])
 function d3Project(data){
 
 	var colorGradient = d3.scale.linear()
 	    .domain([0.5, 0.75, 2])
-	    .range(['#ff0000', '#0000ff', '#00ff00']);
+	    .range(['#AA6C38', '#882D60', '#008888']);
 
   svg.selectAll('circle')
       .data(data)
       .enter()
-        .append('circle');
+        .append('circle')
+				.on('mousedown', function(){
+	    explode(d3.select(this))});
 
   svg.selectAll('circle')
     .data(data)
-        .attr('r', function(d){ return d/35 +'px';})
-        .attr('cx', function(y, x){ return (103-(data.length/(x+1)))+'%';})
+        .attr('r', function(d){ return d/10 +'px';})
+        .attr('cx', function(y, x){ return (103-(data.length/(x+0.5)))+'%';})
         .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
         .attr('class','bubble')
         .style('fill',function(d){ return colorGradient(100/d);})
-        .style('opacity', function(d){ return d/120;});
-				// .style('transition', function(d){return })
+        .style('opacity', function(d){ return d/250;});
     return svg;
-}
+	svg.selectAll('.bubble')
+		.addEventListener(attr('r') >= 4 , function(e){
+			event
+			.transition()
+	    .duration(500)
+	      .attr('r', '100%');
+	  return this;
+	})
+};
+// function visualOne(data){
+//
+// 	var colorGradient = d3.scale.linear()
+// 	    .domain([0.5, 0.75, 2])
+// 	    .range(['#ff0000', '#0000ff', '#00ff00']);
+//
+//   svg.selectAll('circle')
+//       .data(data)
+//       .enter()
+//         .append('circle')
+//
+// 				.on('mousedown', function(){explode(d3.select(this))});
+//
+//   svg.selectAll('circle')
+//     .data(data)
+//         .attr('r', function(d){ return d/35 +'px';})
+//         .attr('cx', function(y, x){ return (103-(data.length/(x+1)))+'%';})
+//         .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
+//         .attr('class','bubble')
+//         .style('fill',function(d){ return colorGradient(100/d);})
+//         .style('opacity', function(d){ return d/120;});
+//     return svg;
+// }
+
+function explode(input){
+	input
+	.transition()
+    .duration(500)
+      .attr('r', '100%');
+  return this;
+};
 
 window.onload = function(){
 
