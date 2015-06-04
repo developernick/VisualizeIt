@@ -13,7 +13,7 @@ body{
 	display: none;
 }
 .container{
-	margin-top: 20px;
+	margin: 0 auto;
 }
 
 .row{
@@ -30,7 +30,7 @@ h1{
 	font-size: 65px;
 	position: relative;
 	display: inline-flex;
-
+	margin-top: 15px;
 }
 .it{
 	color:#1E666C;
@@ -49,29 +49,36 @@ button, input {
 	/*border: 2px dashed white;*/
 }
 .guestnav{
-	display: flex;
-	align-content: center;
+	float: right;
+	margin-top: 15px;
 }
-.nav{
-	float:right;
+.navbar{
 	align-content: center;
+	/*margin-top: 2em;*/
 }
 .question{
-	margin-top: 50px;
+	margin: 0 auto;
+	text-align: center;
 }
-.login_form{
+.one-half{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
 	margin: 0 auto;
-	position: relative;
 }
 svg{
-	margin-top: 40px;
+	margin-top: 6em;
 	/*border: 2px dashed white;*/
 	background-color: black;
-	overflow: visible;
 	border-radius: 10px;
 	-webkit-box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
 	-moz-box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
 	box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
+}
+#signin{
+	float: right;
+	position: relative;
+}
+
+#signup{
+
 }

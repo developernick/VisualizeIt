@@ -1,12 +1,9 @@
+  <% if current_user %>
+    <%= erb :partials %>
+  <%else%>
+  
+  <% end %>
 
   <div class="row u-full-width" id="window">
 
   </div>
-
-  <% if current_user %>
-    <%= erb :partials %>
-  <%else%>
-  <div class="question row five columns">
-    <p>Want more? Log In/Sign up for more cool views!</p>
-  </div>
-  <% end %>

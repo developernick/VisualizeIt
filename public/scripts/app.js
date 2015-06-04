@@ -19,7 +19,7 @@ window.AudioContext = window.AudioContext ||
 window.webkitAudioContext;
 
 var context = new AudioContext();
-var samples = 2048;
+var samples = 1024;
 var analyser = context.createAnalyser();
 // ---Getting Users Microphone---
 navigator.getUserMedia({audio: true}, function(stream) {
@@ -39,39 +39,36 @@ navigator.getUserMedia({audio: true}, function(stream) {
 
 // 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-
 // d3Project(data, [ colors])
+
 function d3Project(data){
-
 	var colorGradient = d3.scale.linear()
-	    .domain([0.5, .75, 2])
-	    .range(['#008888', '#381641', '#A6C662']);//([ top, middle, bottom ])
-
+	    .domain([0.2, 0.75, 2])
+	    .range(['#008888', '#381641', '#31561B']);//([ top, middle, bottom ])
   svg.selectAll('circle')
       .data(data)
       .enter()
         .append('circle')
 				// .event($('.bubble').attr('r') > '3px', function(){explode(d3.select(this))})
 				.on('mousedown', function(){explode(d3.select(this))});
-
   svg.selectAll('circle')
     .data(data)
-        .attr('r', function(d){ return d/10 +'px';})
-        .attr('cx', function(y, x){ return (103-(data.length/(x+0.5)))+'%';})
-        .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
+        .attr('r', function(d){ return d/20 +'px';})
+        .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
+        .attr('cy', function(d){ return Math.abs(450-d*1.75) +'px';})
         .attr('class','bubble')
         .style('fill',function(d){ return colorGradient(100/d);})
-        .style('opacity', function(d){ return d/250;});
+        .style('opacity', function(d){ return d/120;});
     return svg;
-
 		function explode(data){
 		data
-			.transition()
-		    .duration(500)
-		      .attr('r', '100%');
+			.transition(200)
+		    .duration(2000)
+		      .attr('r', function(d){ return d*2;})
 		  return this;
 		};
-
 }
-// function visualOne(data){
+
+// function d3Project(data){
 //
 // 	var colorGradient = d3.scale.linear()
 // 	    .domain([0.5, 0.75, 2])
@@ -87,21 +84,21 @@ function d3Project(data){
 //   svg.selectAll('circle')
 //     .data(data)
 //         .attr('r', function(d){ return d/35 +'px';})
-//         .attr('cx', function(y, x){ return (103-(data.length/(x+1)))+'%';})
+//         .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
 //         .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
 //         .attr('class','bubble')
 //         .style('fill',function(d){ return colorGradient(100/d);})
 //         .style('opacity', function(d){ return d/120;});
 //     return svg;
 // }
-
-function explode(data){
-data
-	.transition()
-    .duration(500)
-      .attr('r', '100%');
-  return this;
-};
+//
+// function explode(data){
+// data
+// 	.transition()
+//     .duration(500)
+//       .attr('r', '100%');
+//   return this;
+// };
 
 window.onload = function(){
 
