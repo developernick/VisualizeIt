@@ -5,10 +5,16 @@ require 'bundler'
 Bundler.require()
 
 # *** Connections ***
+db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/visual_data')
 ActiveRecord::Base.establish_connection(
   :adapter => 'postgresql',
-  :database => 'visual_data'
+  :host     => db.host,
+  :username => db.user,
+  :password => db.password,
+  :database => db.path[1..-1],
+  :encoding => 'utf8'
 )
+
 
 # *** Sesions***
 enable(:sessions)
