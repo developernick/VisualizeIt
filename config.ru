@@ -26,7 +26,7 @@ require "./controllers/visuals_controller"
 
 # *** Routing ***
 map('/users') { run UsersController.new() }
-map('/visuals') { run VisualsController.new() }
+# map('/visuals') { run VisualsController.new() }
 map('/sessions') { run SessionsController.new() }
 
 map('/') { run ApplicationController.new() }
