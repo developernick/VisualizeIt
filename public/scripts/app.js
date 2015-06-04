@@ -49,7 +49,7 @@ function d3Project(data){
       .enter()
         .append('circle')
 				// .event($('.bubble').attr('r') > '3px', function(){explode(d3.select(this))})
-				.on('mousedown', function(){explode(d3.select(this))});
+				.on('mouseover', function(){explode(d3.select(this))});
   svg.selectAll('circle')
     .data(data)
         .attr('r', function(d){ return d/20 +'px';})
@@ -59,11 +59,13 @@ function d3Project(data){
         .style('fill',function(d){ return colorGradient(100/d);})
         .style('opacity', function(d){ return d/120;});
     return svg;
+
 		function explode(data){
 		data
 			.transition(200)
-		    .duration(2000)
-		      .attr('r', function(d){ return d*2;})
+		    .duration(600)
+		      .attr('r', function(d){ return d*5;})
+					.style('opacity', function(d){ return d/360;});
 		  return this;
 		};
 }
@@ -79,7 +81,7 @@ function d3Project(data){
 //       .enter()
 //         .append('circle')
 //
-// 				.on('mousedown', function(){explode(d3.select(this))});
+// 				.on('click', function(){explode(d3.select(this))});
 //
 //   svg.selectAll('circle')
 //     .data(data)
