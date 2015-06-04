@@ -110,3 +110,7 @@ window.onload = function(){
             // .attr('width', '980px')
             .attr('height', '410px');
 };
+
+function LoginForm() {
+	// body...
+}

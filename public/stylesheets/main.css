@@ -15,15 +15,18 @@ body{
 .container{
 	margin: 0 auto;
 }
-
+form{
+	font-family: 'Lato', sans-serif;
+	color: #A0A0A0;
+	border-color: #1E666C;
+}
 .row{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
 }
-input{
+h2{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
-	border-color: #1E666C;
 }
 h1{
 	font-family: 'Lato', sans-serif;
@@ -35,31 +38,22 @@ h1{
 .it{
 	color:#1E666C;
 }
-button, input {
+input {
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
 	border-color: #1E666C;
-	-webkit-box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
-	-moz-box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
-	box-shadow: 1px 5px 201px -1px rgba(0,0,0,1);
+}
+button {
+	font-family: 'Lato', sans-serif;
+	color: #A0A0A0;
+	border-color: #1E666C;
 }
 .options{
 	margin-top: 75px;
 	position: relative;
 	/*border: 2px dashed white;*/
 }
-.guestnav{
-	float: right;
-	margin-top: 15px;
-}
-.navbar{
-	align-content: center;
-	/*margin-top: 2em;*/
-}
-.question{
-	margin: 0 auto;
-	text-align: center;
-}
+
 .one-half{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
@@ -74,11 +68,46 @@ svg{
 	-moz-box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
 	box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
 }
-#signin{
+.logoutForm{
 	float: right;
+	margin: 0 auto;
+}
+.usernav{
+	float:right;
+	margin: 0 auto;
+	padding-top: 2.2em;
+}
+.guestbtn{
+	float: right;
+
+}
+.navbutton{
+	margin: 0px auto;
+	/*float: right;*/
+}
+.guestnav{
+	float: right;
+	margin-top: 1.5em;
+}
+.navbar{
+	align-content: center;
+	/*margin-top: 2em;*/
+}
+.question{
+	float: right;
+	margin-right: 2.95em;
+	text-align: center;
+	font-size: 13px;
+}
+#signin{
 	position: relative;
+	float: right;
 }
 
 #signup{
-
+		position: relative;
+		float: right;
+}
+#userOptions{
+	display: none;
 }
