@@ -91,7 +91,7 @@ svg{
 }
 
 #userOptions{
-
+display: none;
 }
 #guestbtn{
 	margin-top: 1em;
