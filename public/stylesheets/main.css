@@ -12,14 +12,6 @@ body{
 	height: 10em;
 	display: none;
 }
-.container{
-	margin: 0 auto;
-}
-form{
-	font-family: 'Lato', sans-serif;
-	color: #A0A0A0;
-	border-color: #1E666C;
-}
 .row{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
@@ -28,16 +20,20 @@ h2{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
 }
-h1{
+.brand-logo{
 	font-family: 'Lato', sans-serif;
 	font-size: 65px;
 	position: relative;
 	display: inline-flex;
-	margin-top: 15px;
+	margin: 0px auto;
 }
-.it{
+.logo{
+	margin: 0px auto;
+}
+#it{
 	color:#1E666C;
 }
+
 input {
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
@@ -49,16 +45,14 @@ button {
 	border-color: #1E666C;
 }
 .options{
-	margin-top: 75px;
 	position: relative;
 	/*border: 2px dashed white;*/
 }
 
-.one-half{
+/*.one-half{
 	font-family: 'Lato', sans-serif;
 	color: #A0A0A0;
-	margin: 0 auto;
-}
+}*/
 svg{
 	margin-top: 3em;
 	/*border: 2px dashed white;*/
@@ -67,47 +61,55 @@ svg{
 	-webkit-box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
 	-moz-box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
 	box-shadow: 1px 5px 99px 45px rgba(0,0,0,.73);
+
 }
 .logoutForm{
 	float: right;
 	margin: 0 auto;
+	font-family: 'Lato', sans-serif;
+	color: #A0A0A0;
+	border-color: #1E666C;
 }
 .usernav{
 	float:right;
 	margin: 0 auto;
-	padding-top: 2.2em;
+	padding-top: 1.5em;
 }
-.guestbtn{
-	float: right;
 
-}
-.navbutton{
-	margin: 0px auto;
-	/*float: right;*/
-}
-.guestnav{
-	float: right;
-	margin-top: 2.5em;
-}
 .navbar{
-	align-content: center;
-	/*margin-top: 2em;*/
+	margin-top: 0.5em;
 }
 .question{
-	float: right;
-	margin-right: 2.95em;
 	text-align: center;
-	font-size: 13px;
+	font-size: 16px;
+	margin: 0px auto;
+	padding-left: 15px;
 }
-#signin{
-	position: relative;
+.navbutton{
 	float: right;
+	margin: 1em;
 }
 
-#signup{
-		position: relative;
-		float: right;
-}
 #userOptions{
-	display: none;
+
+}
+#guestbtn{
+	margin-top: 1em;
+}
+#login_form{
+	margin-top: 1.5em;
+}
+#signup_form{
+	font-size: 14px;
+	display: inline-block;
+	float: left;
+	margin-top: 1.5em;
+}
+.log{
+	margin: 0px auto;
+
+}
+.form{
+	margin: 0px auto;
+	display: inline-block;
 }

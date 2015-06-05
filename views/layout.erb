@@ -3,8 +3,9 @@
     <title>VisualizeIt</title>
     <link rel="stylesheet" href="/stylesheets/normalize.css">
     <link rel="stylesheet" href="/stylesheets/skeleton.css">
-    <link rel="stylesheet" href="/stylesheets/main.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/stylesheets/main.css">
 
 
     <script type="text/javascript" src="/scripts/lib/jquery.js"></script>
@@ -13,37 +14,35 @@
     <script type="text/javascript" src="/scripts/lib/d3-min.js"></script>
     <script type="text/javascript" src="/scripts/lib/d3.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-
   </head>
 
   <body>
 
     <nav class="row navbar container u-full-width">
       <div class="one-half column">
-        <h1 class="brand-logo"><p>Visualize</p><p class="it">It</p></h1>
+        <h1 class="brand-logo"><p class="logo">Visualize</p><p class="logo" id="it">It</p></h1>
+        <p class="question seven columns">Log In/Sign up for more cool views!</p>
       </div>
+
       <div class="row one-half column mainNav">
         <% if current_user %>
-        <div class="three columns usernav">
+        <div class="usernav">
           <form class="logoutForm"action="/sessions" method='post'>
             <input type="hidden" name='_method' value='delete'>
-            <input type="submit" value='Log-Off'>
+            <button type="submit" value='Log-Off'>Sign Out</button>
           </form>
         </div>
         <% else %>
-          <div class="two-thirds column guestnav ">
-
-            <div class="u-full-width guestbtn">
-              <form class="one-half column navbutton" action="/log_in" method="get">
-                <button type="submit" onclick="LoginForm()"id="signin">Log In </button>
-              </form>
-              <form class="one-half column navbutton" action="/sign_up" method="get">
-                <button type="submit" class="" id="signup">Sign Up</button>
-              </form>
-            </div>
-            <p class="question two-thirds column">Log In/Sign up for more cool views!</p>
+          <div class="u-full-width" id="guestbtn">
+              <button class="four columns navbutton" type="submit" id="signin">Log In </button>
+              <button class="four columns navbutton" type="submit" id="signup">Sign Up</button>
           </div>
-
+          <div class="u-full-width" id= "login_form">
+            <%= erb :login%>
+          </div>
+          <div class="u-full-width" id="signup_form">
+            <%= erb :new_user%>
+          </div>
         <% end %>
       </div>
     </nav>

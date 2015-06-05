@@ -52,9 +52,9 @@ function d3Project(data){
 				.on('mouseover', function(){explode(d3.select(this))});
   svg.selectAll('circle')
     .data(data)
-        .attr('r', function(d){ return d/20 +'px';})
+        .attr('r', function(d){ return d/16 +'px';})
         .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
-        .attr('cy', function(d){ return Math.abs(450-d*1.75) +'px';})
+        .attr('cy', function(d){ return Math.abs(550-d*1.75) +'px';})
         .attr('class','bubble')
         .style('fill',function(d){ return colorGradient(100/d);})
         .style('opacity', function(d){ return d/120;});
@@ -104,13 +104,22 @@ function d3Project(data){
 
 window.onload = function(){
 
-  svg = d3.select('#window')
+  svg = d3.select('body')
           .append('svg')
-						.attr('class', 'u-full-width')
-            // .attr('width', '980px')
-            .attr('height', '410px');
+						.attr('class', 'eleven columns offset-by-half')
+            // .attr('width', '1000px')
+            .attr('height', '450px');
 };
 
-function LoginForm() {
-	// body...
-}
+$(document).ready(function() {
+	$("#login_form").hide();
+	$("#signup_form").hide();
+		$('#signin').click(function() {
+        $("#guestbtn").hide();
+				$("#login_form").show();
+    });
+		$('#signup').click(function() {
+        $("#guestbtn").hide();
+				$("#signup_form").show();
+    });
+});
