@@ -29,18 +29,38 @@ navigator.getUserMedia({audio: true}, function(stream) {
 	analyser.fftSize = samples;
 
 	var data = new Uint8Array(samples);
+	var selection = $("#dropdown option:selected" ).val();
 
 	setInterval(function(){
-    analyser.getByteFrequencyData(data);
-    d3Project(data);// newVisual
-  }, 2); // repeat rendering project
+		analyser.getByteFrequencyData(data);
+		VisualOne(data);
+	}, 2);
+
+	// function Visuals(value) {
+	// 	if (selection == "VisualTwo") {
+	// 		setInterval(function(){
+	// 			analyser.getByteFrequencyData(data);
+	// 			VisualTwo(data); // newVisual
+	// 		}, 2); // repeat rendering project
+	// 	} else {
+	// 		setInterval(function(){
+	// 			analyser.getByteFrequencyData(data);
+	// 			VisualOne(data); // newVisual
+	// 		}, 2); // repeat rendering project
+	// 	}
+	// };
+
+	// setInterval(function(){
+  //   analyser.getByteFrequencyData(data);
+	// 	VisualOne(data);
+  // }, 2);
 
 }, function(error){console.log(error);});
 
 // 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-
 // d3Project(data, [ colors])
 
-function d3Project(data){
+function VisualOne(data){
 	var colorGradient = d3.scale.linear()
 	    .domain([0.2, 0.75, 2])
 	    .range(['#008888', '#381641', '#31561B']);//([ top, middle, bottom ])
@@ -52,9 +72,9 @@ function d3Project(data){
 				.on('mouseover', function(){explode(d3.select(this))});
   svg.selectAll('circle')
     .data(data)
-        .attr('r', function(d){ return d/16 +'px';})
+        .attr('r', function(d){ return d/17 +'px';})
         .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
-        .attr('cy', function(d){ return Math.abs(550-d*1.75) +'px';})
+        .attr('cy', function(d){ return Math.abs(450-d*1.5) +'px';})
         .attr('class','bubble')
         .style('fill',function(d){ return colorGradient(100/d);})
         .style('opacity', function(d){ return d/120;});
@@ -70,56 +90,74 @@ function d3Project(data){
 		};
 }
 
-// function d3Project(data){
-//
-// 	var colorGradient = d3.scale.linear()
-// 	    .domain([0.5, 0.75, 2])
-// 	    .range(['#ff0000', '#0000ff', '#00ff00']);
-//
-//   svg.selectAll('circle')
-//       .data(data)
-//       .enter()
-//         .append('circle')
-//
-// 				.on('click', function(){explode(d3.select(this))});
-//
-//   svg.selectAll('circle')
-//     .data(data)
-//         .attr('r', function(d){ return d/35 +'px';})
-//         .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
-//         .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
-//         .attr('class','bubble')
-//         .style('fill',function(d){ return colorGradient(100/d);})
-//         .style('opacity', function(d){ return d/120;});
-//     return svg;
-// }
-//
-// function explode(data){
-// data
-// 	.transition()
-//     .duration(500)
-//       .attr('r', '100%');
-//   return this;
-// };
+function VisualTwo(data){
+
+	var colorGradient = d3.scale.linear()
+	    .domain([0.5, 0.75, 2])
+	    .range(['#ff0000', '#0000ff', '#00ff00']);
+
+  svg.selectAll('circle')
+      .data(data)
+      .enter()
+        .append('circle')
+				.on('click', function(){explode(d3.select(this))});
+
+  svg.selectAll('circle')
+    .data(data)
+        .attr('r', function(d){ return d/35 +'px';})
+        .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
+        .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
+        .attr('class','bubble')
+        .style('fill',function(d){ return colorGradient(100/d);})
+        .style('opacity', function(d){ return d/120;});
+    return svg;
+}
+
+function explode(data){
+data
+	.transition()
+    .duration(500)
+      .attr('r', '100%');
+  return this;
+};
+
+function refresh(Visuals) {
+
+	svg = d3.select('body')
+          .append('svg')
+						.attr('class', 'eleven columns offset-by-half svg')
+            .attr('height', '450px');
+}
+// d3.select("#dropdown").change($('#dropdown').val());
 
 window.onload = function(){
 
   svg = d3.select('body')
           .append('svg')
-						.attr('class', 'eleven columns offset-by-half')
-            // .attr('width', '1000px')
+						.attr('class', 'eleven columns offset-by-half svg')
             .attr('height', '450px');
 };
 
 $(document).ready(function() {
+	$(".svg").hide().fadeIn(4000);
+	$(".navbar").hide().fadeIn(7000);
+	$(".question").hide().fadeIn(30000);
+	$(".mainNav").hide().fadeIn(9000);
+
+
 	$("#login_form").hide();
-	$("#signup_form").hide();
 		$('#signin').click(function() {
         $("#guestbtn").hide();
-				$("#login_form").show();
+				$("#login_form").fadeIn(600);
     });
+
+		$("#signup_form").hide();
 		$('#signup').click(function() {
         $("#guestbtn").hide();
-				$("#signup_form").show();
+				$("#signup_form").fadeIn(800);
     });
+
+			$('#dropdown').change(function() {
+
+    	});
 });

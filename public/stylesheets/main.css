@@ -64,6 +64,7 @@ svg{
 
 }
 .logoutForm{
+	position: relative;
 	float: right;
 	margin: 0 auto;
 	font-family: 'Lato', sans-serif;
@@ -74,6 +75,7 @@ svg{
 	float:right;
 	margin: 0 auto;
 	padding-top: 1.5em;
+	display: inline-block;
 }
 
 .navbar{
@@ -91,7 +93,7 @@ svg{
 }
 
 #userOptions{
-display: none;
+/*display: none;*/
 }
 #guestbtn{
 	margin-top: 1em;
@@ -105,11 +107,16 @@ display: none;
 	float: left;
 	margin-top: 1.5em;
 }
-.log{
-	margin: 0px auto;
 
-}
 .form{
 	margin: 0px auto;
 	display: inline-block;
+}
+#dropdown{
+	position: relative;
+	display: inline;
+	float: right;
+	margin-right: 2em;
+	background-color: inherit;
+	border-color: #1E666C;
 }
