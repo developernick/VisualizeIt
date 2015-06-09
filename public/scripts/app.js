@@ -1,5 +1,5 @@
-
-// $(document).ready(function() {});
+$(document).ready(function() {
+var app = app || {};
 
 // -		-		-		-	Web Audio API
 //		-		-		-		-		-	--Global Audio var--
@@ -28,39 +28,56 @@ navigator.getUserMedia({audio: true}, function(stream) {
 	// analyser.connect(context.destination); <---- allows monitoring
 	analyser.fftSize = samples;
 
-	var data = new Uint8Array(samples);
-	var selection = $("#dropdown option:selected" ).val();
+	// var data = new Uint8Array(samples);
+},	function(error){console.log(error);});
 
-	setInterval(function(){
-		analyser.getByteFrequencyData(data);
-		VisualOne(data);
-	}, 2);
+	$('#newVisual').click(function () {
+		var data = new Uint8Array(samples);
 
-	// function Visuals(value) {
-	// 	if (selection == "VisualTwo") {
-	// 		setInterval(function(){
-	// 			analyser.getByteFrequencyData(data);
-	// 			VisualTwo(data); // newVisual
-	// 		}, 2); // repeat rendering project
-	// 	} else {
-	// 		setInterval(function(){
-	// 			analyser.getByteFrequencyData(data);
-	// 			VisualOne(data); // newVisual
-	// 		}, 2); // repeat rendering project
-	// 	}
-	// };
 
-	// setInterval(function(){
-  //   analyser.getByteFrequencyData(data);
-	// 	VisualOne(data);
-  // }, 2);
+		if ($('#dropdown').val() == 2) {
+			$('#divsvg').empty('svg');
+			console.log("this is numba one");
 
-}, function(error){console.log(error);});
+			setInterval(function(){
+						analyser.getByteFrequencyData(data);
+						VisualTwo(data);}, 2);
+						app.render();
+
+		} else {
+			setInterval(function(){
+				analyser.getByteFrequencyData(data);
+				VisualOne(data);}, 24);
+				app.render();
+		}
+});
 
 // 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-
-// d3Project(data, [ colors])
 
 function VisualOne(data){
+	var colorGradient = d3.scale.linear()
+			.domain([0.2, 0.75, 2])
+	    .range(['#19EDFF', '#FF6900', '#381641']);
+
+  svg.selectAll('rect')
+      .data(data)
+      .enter()
+        .append('rect')
+				.on('click', function(){explode(d3.select(this))});
+
+  svg.selectAll('rect')
+    .data(data)
+				.attr('width', function(d){ return d/10 +'px';})
+        .attr('x', function(y, x){ return (120-(data.length/(x-2)))+'%';})
+				// .attr('y', function(x, y){ return (120-(data.length/(x+0.05)))+'%';})
+        .attr('height', function(d){ return Math.abs(250-d*1.5) +'%';})
+        .attr('class','bars')
+        .style('fill',function(d){ return colorGradient(100/d);})
+        .style('opacity', function(d){ return d/800;});
+    return svg;
+};
+
+function VisualTwo(data){
 	var colorGradient = d3.scale.linear()
 	    .domain([0.2, 0.75, 2])
 	    .range(['#008888', '#381641', '#31561B']);//([ top, middle, bottom ])
@@ -88,61 +105,27 @@ function VisualOne(data){
 					.style('opacity', function(d){ return d/360;});
 		  return this;
 		};
-}
-
-function VisualTwo(data){
-
-	var colorGradient = d3.scale.linear()
-	    .domain([0.5, 0.75, 2])
-	    .range(['#ff0000', '#0000ff', '#00ff00']);
-
-  svg.selectAll('circle')
-      .data(data)
-      .enter()
-        .append('circle')
-				.on('click', function(){explode(d3.select(this))});
-
-  svg.selectAll('circle')
-    .data(data)
-        .attr('r', function(d){ return d/35 +'px';})
-        .attr('cx', function(y, x){ return (103-(data.length/(x+0.2)))+'%';})
-        .attr('cy', function(d){ return Math.abs(430-d*1.75) +'px';})
-        .attr('class','bubble')
-        .style('fill',function(d){ return colorGradient(100/d);})
-        .style('opacity', function(d){ return d/120;});
-    return svg;
-}
-
-function explode(data){
-data
-	.transition()
-    .duration(500)
-      .attr('r', '100%');
-  return this;
 };
 
-function refresh(Visuals) {
+// function explode(data){
+// 	data
+// 	.transition()
+//     .duration(500)
+//       .attr('r', '100%');
+//   return this;
+// };
 
-	svg = d3.select('body')
+app.render = function(){
+	$('#divsvg').empty('svg');
+  svg = d3.select('#divsvg')
           .append('svg')
-						.attr('class', 'eleven columns offset-by-half svg')
-            .attr('height', '450px');
-}
-// d3.select("#dropdown").change($('#dropdown').val());
-
-window.onload = function(){
-
-  svg = d3.select('body')
-          .append('svg')
-						.attr('class', 'eleven columns offset-by-half svg')
+						.attr('class', ' u-full-width svg')
             .attr('height', '450px');
 };
 
-$(document).ready(function() {
-	$(".svg").hide().fadeIn(4000);
-	$(".navbar").hide().fadeIn(7000);
-	$(".question").hide().fadeIn(30000);
-	$(".mainNav").hide().fadeIn(9000);
+	$(".navbar").hide().fadeIn(4000);
+	$(".question").hide().fadeIn(10000);
+	$(".mainNav").hide().fadeIn(7000);
 
 
 	$("#login_form").hide();
@@ -157,7 +140,6 @@ $(document).ready(function() {
 				$("#signup_form").fadeIn(800);
     });
 
-			$('#dropdown').change(function() {
+		// app.visual();
 
-    	});
 });
