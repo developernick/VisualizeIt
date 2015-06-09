@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 var app = app || {};
 
@@ -27,48 +28,54 @@ navigator.getUserMedia({audio: true}, function(stream) {
 	microphone.connect(analyser);
 	// analyser.connect(context.destination); <---- allows monitoring
 	analyser.fftSize = samples;
-
+	var data = new Uint8Array(samples);
 	// var data = new Uint8Array(samples);
 },	function(error){console.log(error);});
 
 	$('#newVisual').click(function () {
 		var data = new Uint8Array(samples);
-
-
 		if ($('#dropdown').val() == 2) {
-			$('#divsvg').empty('svg');
+			$('#divsvg').empty();
 			console.log("this is numba one");
 
 			setInterval(function(){
-						analyser.getByteFrequencyData(data);
-						VisualTwo(data);}, 2);
-						app.render();
+				analyser.getByteFrequencyData(data);
+				VisualTwo(data);}, 2);
+				app.render();
 
 		} else {
+			$('#divsvg').empty();
+			console.log("hold on to your butts");
 			setInterval(function(){
 				analyser.getByteFrequencyData(data);
-				VisualOne(data);}, 24);
+				VisualOne(data);}, 2);
 				app.render();
-		}
-});
+		};
+	});
 
+app.visual = function () {
+
+	setInterval(function(){
+		analyser.getByteFrequencyData(data);
+		VisualOne(data);}, 2);
+		app.render();
+	};
 // 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-
 
 function VisualOne(data){
 	var colorGradient = d3.scale.linear()
-			.domain([0.2, 0.75, 2])
-	    .range(['#19EDFF', '#FF6900', '#381641']);
+			.domain([0.2, 0.75, 1.75])
+	    .range(['#19EDFF', '#FF6900', '#14CC88']);
 
   svg.selectAll('rect')
       .data(data)
       .enter()
         .append('rect')
-				.on('click', function(){explode(d3.select(this))});
 
   svg.selectAll('rect')
     .data(data)
 				.attr('width', function(d){ return d/10 +'px';})
-        .attr('x', function(y, x){ return (120-(data.length/(x-2)))+'%';})
+        .attr('x', function(y, x){ return (120-(data.length/(x-0.005)))+'%';})
 				// .attr('y', function(x, y){ return (120-(data.length/(x+0.05)))+'%';})
         .attr('height', function(d){ return Math.abs(250-d*1.5) +'%';})
         .attr('class','bars')
@@ -123,6 +130,7 @@ app.render = function(){
             .attr('height', '450px');
 };
 
+	$(".svg").hide().fadeIn(4000);
 	$(".navbar").hide().fadeIn(4000);
 	$(".question").hide().fadeIn(10000);
 	$(".mainNav").hide().fadeIn(7000);
@@ -140,6 +148,17 @@ app.render = function(){
 				$("#signup_form").fadeIn(800);
     });
 
-		// app.visual();
+		window.onload = function () {
+			var data = new Uint8Array(samples);
+			 function visual() {
+				setInterval(function(){
+					analyser.getByteFrequencyData(data);
+					VisualOne(data);}, 2);
+					app.render();
+				};
+
+				visual();
+		};
+
 
 });

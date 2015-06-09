@@ -111,12 +111,14 @@ svg{
 .form{
 	margin: 0px auto;
 	display: inline-block;
+	font-family: 'Lato', sans-serif;
 }
 #dropdown{
 	position: relative;
 	display: inline;
 	float: right;
-	margin-right: 2em;
+	margin-right: 1.5em;
 	background-color: inherit;
 	border-color: #1E666C;
+	font-family: 'Lato', sans-serif;
 }
