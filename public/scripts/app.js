@@ -35,7 +35,7 @@ navigator.getUserMedia({audio: true}, function(stream) {
 	$('#newVisual').click(function () {
 		var data = new Uint8Array(samples);
 		if ($('#dropdown').val() == 2) {
-			$('#divsvg').empty();
+			clearInterval();
 			console.log("this is numba one");
 
 			setInterval(function(){
@@ -44,7 +44,7 @@ navigator.getUserMedia({audio: true}, function(stream) {
 				app.render();
 
 		} else {
-			$('#divsvg').empty();
+			clearInterval();
 			console.log("hold on to your butts");
 			setInterval(function(){
 				analyser.getByteFrequencyData(data);
