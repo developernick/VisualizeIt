@@ -18,6 +18,7 @@ GEM
     backports (3.6.4)
     bcrypt (3.1.10)
     builder (3.2.2)
+    fullscreen (0.0.1)
     i18n (0.7.0)
     json (1.8.2)
     minitest (5.6.1)
@@ -53,6 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  fullscreen
   json
   pg
   sass

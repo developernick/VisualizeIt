@@ -1,3 +1,5 @@
+var interval = setInterval(function () { console.log('...ready')}, 1000);
+
 
 $(document).ready(function() {
 var app = app || {};
@@ -22,6 +24,10 @@ window.webkitAudioContext;
 var context = new AudioContext();
 var samples = 1024;
 var analyser = context.createAnalyser();
+analyser.smoothingTimeConstant = 0.5;
+
+
+
 // ---Getting Users Microphone---
 navigator.getUserMedia({audio: true}, function(stream) {
 	microphone = context.createMediaStreamSource(stream);
@@ -29,38 +35,30 @@ navigator.getUserMedia({audio: true}, function(stream) {
 	// analyser.connect(context.destination); <---- allows monitoring
 	analyser.fftSize = samples;
 	var data = new Uint8Array(samples);
-	// var data = new Uint8Array(samples);
+
 },	function(error){console.log(error);});
 
 	$('#newVisual').click(function () {
 		var data = new Uint8Array(samples);
-		if ($('#dropdown').val() == 2) {
-			clearInterval();
-			console.log("this is numba one");
 
-			setInterval(function(){
+		if ($('#dropdown').val() == 2) {
+			console.log("this is numba one");
+			clearInterval(interval);
+			interval =	setInterval(function(){
 				analyser.getByteFrequencyData(data);
 				VisualTwo(data);}, 2);
 				app.render();
-
 		} else {
-			clearInterval();
 			console.log("hold on to your butts");
-			setInterval(function(){
+			clearInterval(interval);
+			interval = setInterval(function(){
 				analyser.getByteFrequencyData(data);
 				VisualOne(data);}, 2);
 				app.render();
 		};
 	});
 
-app.visual = function () {
-
-	setInterval(function(){
-		analyser.getByteFrequencyData(data);
-		VisualOne(data);}, 2);
-		app.render();
-	};
-// 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-
+// 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-0AD918
 
 function VisualOne(data){
 	var colorGradient = d3.scale.linear()
@@ -72,28 +70,31 @@ function VisualOne(data){
       .enter()
         .append('rect')
 
-  svg.selectAll('rect')
-    .data(data)
-				.attr('width', function(d){ return d/10 +'px';})
-        .attr('x', function(y, x){ return (120-(data.length/(x-0.005)))+'%';})
-				// .attr('y', function(x, y){ return (120-(data.length/(x+0.05)))+'%';})
-        .attr('height', function(d){ return Math.abs(250-d*1.5) +'%';})
-        .attr('class','bars')
-        .style('fill',function(d){ return colorGradient(100/d);})
-        .style('opacity', function(d){ return d/800;});
-    return svg;
+	svg.selectAll('rect')
+	.data(data)
+			.attr('width', function(d){ return d/10 +'px';})
+			.attr('x', function(y, x){ return (120-(data.length/(x-0.005)))+'%';})
+			// .attr('y', function(x, y){ return (120-(data.length/(x+0.05)))+'%';})
+			.attr('height', function(d){ return Math.abs(250-d*1.5) +'%';})
+			.attr('class','bars')
+			.style('fill',function(d){ return colorGradient(100/d);})
+			.style('opacity', function(d){ return d/800;});
+	return svg;
+	return false;
 };
 
 function VisualTwo(data){
 	var colorGradient = d3.scale.linear()
 	    .domain([0.2, 0.75, 2])
 	    .range(['#008888', '#381641', '#31561B']);//([ top, middle, bottom ])
+
   svg.selectAll('circle')
       .data(data)
       .enter()
         .append('circle')
 				// .event($('.bubble').attr('r') > '3px', function(){explode(d3.select(this))})
 				.on('mouseover', function(){explode(d3.select(this))});
+
   svg.selectAll('circle')
     .data(data)
         .attr('r', function(d){ return d/17 +'px';})
@@ -112,6 +113,7 @@ function VisualTwo(data){
 					.style('opacity', function(d){ return d/360;});
 		  return this;
 		};
+		return false;
 };
 
 // function explode(data){
@@ -127,7 +129,7 @@ app.render = function(){
   svg = d3.select('#divsvg')
           .append('svg')
 						.attr('class', ' u-full-width svg')
-            .attr('height', '450px');
+            .attr('height', '500px');
 };
 
 	$(".svg").hide().fadeIn(4000);
@@ -147,11 +149,12 @@ app.render = function(){
         $("#guestbtn").hide();
 				$("#signup_form").fadeIn(800);
     });
-
+	
 		window.onload = function () {
 			var data = new Uint8Array(samples);
 			 function visual() {
-				setInterval(function(){
+				clearInterval(interval);
+				interval = setInterval(function(){
 					analyser.getByteFrequencyData(data);
 					VisualOne(data);}, 2);
 					app.render();
