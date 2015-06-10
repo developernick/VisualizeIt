@@ -3,7 +3,7 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require 'bundler'
 Bundler.require()
-require 'fullscreen'
+
 # *** Connections ***
 db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/visual_data')
 ActiveRecord::Base.establish_connection(
