@@ -60,6 +60,8 @@ navigator.getUserMedia({audio: true}, function(stream) {
 
 // 													-_-_-_-_-_- ***D3*** -_-_-_-_-_-0AD918
 
+// -_-_-_-_-_-_- Bar Visual -_-_-_-_-_-_-
+
 function VisualOne(data){
 	var colorGradient = d3.scale.linear()
 			.domain([0.2, 0.75, 1.75])
@@ -82,6 +84,8 @@ function VisualOne(data){
 	return svg;
 	return false;
 };
+
+// -_-_-_-_-_-_- Bubble Visual -_-_-_-_-_-_-
 
 function VisualTwo(data){
 	var colorGradient = d3.scale.linear()
@@ -124,6 +128,8 @@ function VisualTwo(data){
 //   return this;
 // };
 
+// -_-_-_-_-_-_- Places Visuals on Page -_-_-_-_-_-_-
+
 app.render = function(){
 	$('#divsvg').empty('svg');
   svg = d3.select('#divsvg')
@@ -149,7 +155,7 @@ app.render = function(){
         $("#guestbtn").hide();
 				$("#signup_form").fadeIn(800);
     });
-	
+
 		window.onload = function () {
 			var data = new Uint8Array(samples);
 			 function visual() {
